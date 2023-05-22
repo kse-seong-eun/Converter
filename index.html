@@ -5,7 +5,7 @@
   </body>
   <!-- <script
     crossorigin
-    src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"
+    src="https://unpkg.com/react@17.0.2/umd/react.development.js"
   ></script>
   <script
     crossorigin
@@ -19,115 +19,39 @@
     crossorigin
     src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
   ></script>
+  <script src="https://unpkg.com/prop-types@15.7.2/prop-types.min.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script type="text/babel">
-    function MinutesToHours() {
-      const [amount, setAmount] = React.useState(0);
-      const [inverted, setInverted] = React.useState(false);
-      const onChange = (event) => {
-        setAmount(event.target.value);
-      };
-      const reset = () => setAmount(0);
-      const onFlip = () => {
-        reset();
-        setInverted((current) => !current);
-      };
+    
+    function Btn({ text, fontSize }) {
+      console.log(text, "was rendered");
       return (
-        <div>
-          <div>
-            <h2 className="hello">Minutes To Hours〰️ </h2>
-            <label htmlFor="minutes">Minutes </label>
-            <input
-              value={inverted ? amount * 60 : amount}
-              id="minutes"
-              placeholder="Minutes"
-              type="number"
-              onChange={onChange}
-              disabled={inverted}
-            />
-          </div>
-          <div>
-            <label htmlFor="hours">Hours </label>
-            <input
-              value={inverted ? amount : Math.round(amount / 60)}
-              id="hours"
-              placeholder="Hours"
-              type="number"
-              onChange={onChange}
-              disabled={!inverted}
-            />
-          </div>
-          <button id="reset" onClick={reset}>
-            Reset
-          </button>
-          <button id="filp" onClick={onFlip}>
-            {inverted ? "되돌리기" : "변환하기"}
-          </button>
-        </div>
+        <button
+          style={{
+            backgroundColor: "tomato",
+            color: "white",
+            padding: "10px 20px",
+            borderRadius: 10,
+            border: 0,
+            //fontSize:fontSize;
+            fontSize,
+          }}
+        >
+          {text}
+        </button>
       );
     }
-    function MeterToKliometer() {
-      const [amount, setAmount] = React.useState(0);
-      const [invert, setInvert] = React.useState(false);
-      const onChange = (event) => {
-        setAmount(event.target.value);
-      };
-      const reset = () => setAmount(0);
-      const onFilp = () => {
-        reset();
-        setInvert((current) => !current);
-      };
-      return (
-        <div>
-          <div>
-            <h2 className="hello">Meter to Kliometer〰️ </h2>
-            <label htmlFor="meters">Meters </label>
-            <input
-              id="meters"
-              placeholder="Meters"
-              type="number"
-              onChange={onChange}
-              value={invert ? amount * 1000 : amount}
-              disabled={invert}
-            />
-          </div>
-          <div>
-            <label htmlFor="kliometers">Kliometers</label>
-            <input
-              id="kliometers"
-              placeholder="Kliometers"
-              type="number"
-              onChange={onChange}
-              value={invert ? amount : Math.round(amount / 1000)}
-              disabled={!invert}
-            />
-          </div>
-          <button id="reset" onClick={reset}>
-            Reset
-          </button>
-          <button id="filp" onClick={onFilp}>
-            Consvert
-          </button>
-        </div>
-      );
-    }
+    const MemorizedBtn = React.memo(Btn);
+
+    MemorizedBtn.propTypes={
+      text: PropTypes.string.isRequired,
+      fontSize: PropTypes.number,
+    };
     function App() {
-      const [index, setIndex] = React.useState("x");
-      const onSelect = (event) => {
-        setIndex(event.target.value);
-      };
-      console.log("render", index);
       return (
         <div>
-          <h1> Converter 🔂</h1>
-          <select onChange={onSelect} value={index}>
-            <option value="x">Select unites</option>
-            <option value="0">Minutes & Hours</option>
-            <option value="1">Meters & Kliometers</option>
-          </select>
-          {index === "x" ? "Select unites" : null}
-          {index === "0" ? <MinutesToHours /> : null}
-          {index === "1" ? <MeterToKliometer /> : null}
+          <MemorizedBtn text="자식 컴포넌트, 버튼" fontSize={20} />
+          <MemorizedBtn text={"자식 컴포넌트, 재활용"} />
         </div>
       );
     }
