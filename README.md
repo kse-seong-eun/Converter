@@ -1,22 +1,22 @@
 # React JS란?!
 
-## 바닐라 JS와 리액트 JS의 차이점을 알고 어떤 장단점이 있는지 확인해 본다. /n Convert 게시물의 파일은 React 17버전을 기준으로 작성되었음. 현재 React 18버전과 차이가 있으니 유의하기.
+- 바닐라 JS와 리액트 JS의 차이점을 알고 어떤 장단점이 있는지 확인해 본다. /n Convert 게시물의 파일은 React 17버전을 기준으로 작성되었음. 현재 React 18버전과 차이가 있으니 유의하기.
 
-# Vanilla JS의 경우 `HTML → JS 순서`
+### Vanilla JS의 경우 `HTML → JS 순서`
 
 📍 Html 작성
 📍 html 요소를 JS로 가져온다.
 📍 event를 감지하고 데이터를 업데이트 한다.
 📍 Html에도 데이터 업데이트를 반영한다.
 
-# React JS는 이와 반대로 `JS에서 HTML 요소`를 컨트롤 한다
+### React JS는 이와 반대로 `JS에서 HTML 요소`를 컨트롤 한다
 
 📍 JS 작성 | React 환경 설정
 📍 React를 이용, HTML요소 생성 및 삽입
 📍 event를 감지하고 데이터를 업데이트 한다.
 📍 Html에도 데이터 업데이트를 반영한다.
 
-# React를 단순하게 사용하자! JSX(실용)
+### React를 단순하게 사용하자! JSX(실용)
 
 - This funny syntax is neither a string nor HTML.
   It is called JSX, and it is a syntax ectension to JavaScript. (JSX = JS를 확장한 문법!)
